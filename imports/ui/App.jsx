@@ -13,8 +13,15 @@ class App extends Component {
         super(props);
 
         this.state = {
+            user: '',
             hideCompleted: false,
         };
+    }
+
+    isLogin(u) {
+        this.setState({
+            user: u,
+        });
     }
 
     toggleHideCompleted() {
@@ -24,7 +31,7 @@ class App extends Component {
     }
 
     showTest() {
-        console.log(this.state.isLogin);
+        console.log(this.state.user);
     }
 
     handleSubmit(e) {
@@ -70,7 +77,7 @@ class App extends Component {
                 <header>
                     <h1>Todo List ({this.props.incompleteCount})</h1>
                     <div className="">
-                        <Login />
+                        <Login login={this.isLogin.bind(this)}/>
                     </div>
                     <label className="hide-completed">
                         <input 
